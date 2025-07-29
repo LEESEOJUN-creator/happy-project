@@ -27,10 +27,16 @@ public class User {
     private String username; // 닉네임 or 이름
 
     @Column(length = 255)
-    private String profileUrl;
+    private String studentCardUrl;
 
     @CreationTimestamp
     private LocalDateTime createdAt; // 가입일
 
     private boolean verified; // 학생증 인증 여부 (false면 로그인 불가)
+
+    public void verify() {
+        this.verified = true;
+    }
+
 }
+
