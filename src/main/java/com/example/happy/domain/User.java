@@ -37,6 +37,9 @@ public class User {
     public void verify() {
         this.verified = true;
     }
+    public void changePassword(String encodedPassword) {
+        this.password = encodedPassword;
+    }
 
 }
 
