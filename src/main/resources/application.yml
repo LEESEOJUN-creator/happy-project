@@ -11,7 +11,10 @@ spring:
         dialect: org.hibernate.dialect.MySQL8Dialect
     show-sql: true
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/feat/3/community_post
   jackson:
     time-zone: Asia/Seoul
 

@@ -1,13 +1,19 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
+<<<<<<< HEAD
     url: jdbc:mysql://localhost:3306/happy_db?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
     username: root          # 로컬 MySQL 계정
     password: jm10811081!    # 로컬 MySQL 비번
+=======
+    url: jdbc:mysql://localhost:3306/happy_db?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: root
+    password: hs8569710!
+>>>>>>> origin/feat/3/community_post
 
   jpa:
     hibernate:
-      ddl-auto: update   # 개발 단계라 자동 반영
+      ddl-auto: update
     properties:
       hibernate:
         format_sql: true
