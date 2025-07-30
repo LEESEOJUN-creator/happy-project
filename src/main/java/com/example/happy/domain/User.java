@@ -3,17 +3,12 @@ package com.example.happy.domain;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
-<<<<<<< HEAD
-=======
-import org.hibernate.annotations.UpdateTimestamp;
->>>>>>> origin/feat/3/community_post
 
 import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-<<<<<<< HEAD
 
 @AllArgsConstructor
 @Builder
@@ -23,25 +18,12 @@ public class User {
     private Long id;  // 사용자 고유 ID
 
     @Column(nullable = false, unique = true) // null값 허용x, 중복 불가
-=======
-@AllArgsConstructor
-@Builder
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
-    private Long id;  // 사용자 고유 ID
-
-    @Column(nullable = false, unique = true)
->>>>>>> origin/feat/3/community_post
     private String email;  // 로그인 ID
 
     @Column(nullable = false)
     private String password; // 암호화된 비밀번호
 
     @Column(nullable = false)
-<<<<<<< HEAD
     private String username; // 닉네임 or 이름
 
     @Column(length = 255)
@@ -55,21 +37,9 @@ public class User {
     public void verify() {
         this.verified = true;
     }
+    public void changePassword(String encodedPassword) {
+        this.password = encodedPassword;
+    }
 
 }
 
-=======
-    private String username; // 닉네임
-
-    @Column(length = 255)
-    private String profileUrl;
-
-    @CreationTimestamp
-    private LocalDateTime createdAt;
-
-    @UpdateTimestamp
-    private LocalDateTime updatedAt;
-
-    private boolean verified; // 학생증 인증 여부
-}
->>>>>>> origin/feat/3/community_post
