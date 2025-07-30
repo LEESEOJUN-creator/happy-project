@@ -5,6 +5,7 @@ import com.example.happy.dto.request.LoginRequestDto;
 import com.example.happy.dto.request.SignupRequestDto;
 import com.example.happy.service.AuthService;
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -21,7 +22,7 @@ public class AuthController {
 
     @PostMapping(value = "/signup", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<String> signup(
-            @ModelAttribute SignupRequestDto dto,
+            @Valid @ModelAttribute SignupRequestDto dto,
             @RequestPart(required = false) MultipartFile studentCardImage
     ) {
         authService.signup(dto, studentCardImage);
