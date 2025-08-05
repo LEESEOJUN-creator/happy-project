@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // AUTO_INCREMENT
+    @Column(name = "user_id")
     private Long id;  // 사용자 고유 ID
 
     @Column(nullable = false, unique = true) // null값 허용x, 중복 불가
