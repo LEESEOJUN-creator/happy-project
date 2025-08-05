@@ -2,13 +2,12 @@ package com.example.happy.service;
 
 import com.example.happy.converter.MypageConverter;
 import com.example.happy.domain.User;
-import com.example.happy.dto.MypageResponseDto;
-import com.example.happy.dto.PasswordUpdateRequestDto;
+import com.example.happy.dto.response.MypageResponseDto;
+import com.example.happy.dto.request.PasswordUpdateRequestDto;
 import com.example.happy.repository.UserRepository;
 import jakarta.servlet.http.HttpSession;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 @Service

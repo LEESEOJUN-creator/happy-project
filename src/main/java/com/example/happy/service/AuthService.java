@@ -18,56 +18,66 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class AuthService {
 
+    private static final String UPLOAD_DIR = System.getProperty("user.dir") + "/uploads/";
+
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final UserConverter userConverter;
 
+    /* 회원가입 */
     public void signup(SignupRequestDto dto, MultipartFile studentCardImage) {
+
+        // 1. 중복 이메일
         if (userRepository.existsByEmail(dto.getEmail())) {
-            throw new RuntimeException("이미 가입된 이메일입니다.");
+            throw new IllegalStateException("이미 가입된 이메일입니다.");
         }
 
-        String encodedPassword = passwordEncoder.encode(dto.getPassword());
+        // 2. 비밀번호 암호화
+        String encodedPwd = passwordEncoder.encode(dto.getPassword());
 
-        String studentCardUrl = null;
-        if (studentCardImage != null && !studentCardImage.isEmpty()) {
-            try {
-                // 절대 경로로 설정
-                String projectPath = System.getProperty("user.dir");
-                String uploadDir = projectPath + "/uploads/";
-                File dir = new File(uploadDir);
-                if (!dir.exists()) {
-                    dir.mkdirs(); // uploads 폴더 생성
-                }
+        // 3. 학생증 이미지 저장 (없어도 OK)
+        String savedUrl = saveImage(studentCardImage);   // null or "/uploads/…"
 
-                String fileName = UUID.randomUUID() + "_" + studentCardImage.getOriginalFilename();
-                File dest = new File(uploadDir + fileName);
-
-                studentCardImage.transferTo(dest);
-                studentCardUrl = "/uploads/" + fileName; // 프론트에서 접근 가능한 경로
-
-            } catch (IOException e) {
-                throw new RuntimeException("학생증 이미지 업로드 실패", e);
-            }
-        }
-
-        User user = userConverter.toUser(dto, encodedPassword, studentCardUrl);
+        // 4. 엔티티 생성 & 저장 (초기 verified = false)
+        User user = userConverter.toUser(dto, encodedPwd, savedUrl);
         userRepository.save(user);
     }
 
+    /* 로그인 – 성공 시 User 리턴 */
     public User login(LoginRequestDto dto) {
+
         User user = userRepository.findByEmail(dto.getEmail())
-                .orElseThrow(() -> new RuntimeException("가입되지 않은 이메일입니다."));
+                .orElseThrow(() -> new IllegalArgumentException("가입되지 않은 이메일입니다."));
 
         if (!passwordEncoder.matches(dto.getPassword(), user.getPassword())) {
-            throw new RuntimeException("비밀번호가 일치하지 않습니다.");
+            throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
         }
 
         if (!user.isVerified()) {
-            throw new RuntimeException("학생증 인증 대기중입니다. 로그인 불가!");
+            throw new IllegalStateException("학생증 인증 대기 중입니다.");
         }
 
-        return user;
+        return user;      // 컨트롤러에서 세션에 넣음
+    }
+
+    /* 이미지 저장 유틸 */
+    private String saveImage(MultipartFile file) {
+
+        if (file == null || file.isEmpty()) return null;
+
+        try {
+            File dir = new File(UPLOAD_DIR);
+            if (!dir.exists()) dir.mkdirs();
+
+            String fileName = UUID.randomUUID() + "_" + file.getOriginalFilename();
+            File dest = new File(dir, fileName);
+            file.transferTo(dest);
+
+            return "/uploads/" + fileName;    // ★ 프론트에서 GET 가능 경로
+        } catch (IOException e) {
+            throw new RuntimeException("학생증 이미지 업로드 실패", e);
+        }
     }
 }
+
 

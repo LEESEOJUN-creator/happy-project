@@ -2,8 +2,8 @@ package com.example.happy.service;
 
 import com.example.happy.domain.Post;
 import com.example.happy.domain.User;
-import com.example.happy.dto.PostRequestDto;
-import com.example.happy.dto.PostResponseDto;
+import com.example.happy.dto.request.PostRequestDto;
+import com.example.happy.dto.response.PostResponseDto;
 import com.example.happy.repository.PostRepository;
 import com.example.happy.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;

@@ -1,7 +1,7 @@
 package com.example.happy.controller;
 
-import com.example.happy.dto.MypageResponseDto;
-import com.example.happy.dto.PasswordUpdateRequestDto;
+import com.example.happy.dto.response.MypageResponseDto;
+import com.example.happy.dto.request.PasswordUpdateRequestDto;
 import com.example.happy.service.MypageService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

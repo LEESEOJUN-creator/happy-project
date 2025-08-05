@@ -1,4 +1,4 @@
-package com.example.happy.dto;
+package com.example.happy.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

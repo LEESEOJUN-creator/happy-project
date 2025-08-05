@@ -1,7 +1,7 @@
 package com.example.happy.controller;
 
-import com.example.happy.dto.PostRequestDto;
-import com.example.happy.dto.PostResponseDto;
+import com.example.happy.dto.request.PostRequestDto;
+import com.example.happy.dto.response.PostResponseDto;
 import com.example.happy.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.example.happy.dto;
+package com.example.happy.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
