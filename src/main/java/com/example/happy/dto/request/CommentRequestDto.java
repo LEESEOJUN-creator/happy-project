@@ -11,5 +11,4 @@ import lombok.Setter;
 @AllArgsConstructor
 public class CommentRequestDto {
     private String content;
-    private Long parentId; // 대댓글인 경우 참조할 부모 댓글 ID
 }

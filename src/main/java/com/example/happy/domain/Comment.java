@@ -30,13 +30,6 @@ public class Comment {
     @Column(nullable = false, length = 500)
     private String content;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "parent_id")
-    private Comment parent;
-
-    @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL)
-    private List<Comment> replies = new ArrayList<>();
-
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 

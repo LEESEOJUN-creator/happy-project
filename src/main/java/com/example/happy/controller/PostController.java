@@ -1,9 +1,12 @@
 package com.example.happy.controller;
 
+import com.example.happy.domain.User;
 import com.example.happy.dto.request.PostRequestDto;
 import com.example.happy.dto.response.PostResponseDto;
 import com.example.happy.service.PostService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -18,43 +21,62 @@ public class PostController {
 
     private final PostService postService;
 
-    // 게시글 생성
-    @PostMapping
+    /* ───────────── 1) 게시글 작성 ───────────── */
+    @PostMapping(consumes = "multipart/form-data")
     public ResponseEntity<Long> createPost(
-            @RequestParam Long userId,
-            @RequestPart PostRequestDto dto,
-            @RequestPart(required = false) MultipartFile imageFile) throws IOException {
-        Long postId = postService.createPost(userId, dto, imageFile);
-        return ResponseEntity.ok(postId);
+            @ModelAttribute PostRequestDto dto,
+            @RequestPart(required = false) MultipartFile imageFile,
+            HttpSession session) throws IOException {
+
+        User loginUser = (User) session.getAttribute("loginUser");
+        if (loginUser == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        Long postId = postService.createPost(loginUser.getId(), dto, imageFile);
+        return ResponseEntity.status(HttpStatus.CREATED).body(postId);
     }
 
-    // 게시글 목록 조회
+    /* ───────────── 2) 전체 목록 ───────────── */
     @GetMapping
     public ResponseEntity<List<PostResponseDto>> getAllPosts() {
-        List<PostResponseDto> posts = postService.getAllPosts();
-        return ResponseEntity.ok(posts);
+        return ResponseEntity.ok(postService.getAllPosts());
     }
 
-    // 게시글 상세 조회
-    @GetMapping("/{id}")
-    public ResponseEntity<PostResponseDto> getPost(@PathVariable Long id) {
-        PostResponseDto post = postService.getPost(id);
-        return ResponseEntity.ok(post);
+    /* ───────────── 3) 단건 조회 ───────────── */
+    @GetMapping("/{postId}")
+    public ResponseEntity<PostResponseDto> getPost(@PathVariable Long postId) {
+        return ResponseEntity.ok(postService.getPost(postId));
     }
 
-    // 게시글 수정
-    @PutMapping("/{id}")
+    /* ───────────── 4) 수정 ───────────── */
+    @PutMapping("/{postId}")
     public ResponseEntity<Long> updatePost(
-            @PathVariable Long id,
-            @RequestBody PostRequestDto dto) {
-        Long updatedId = postService.updatePost(id, dto);
+            @PathVariable Long postId,
+            @RequestBody PostRequestDto dto,
+            HttpSession session) {
+
+        User loginUser = (User) session.getAttribute("loginUser");
+        if (loginUser == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        Long updatedId = postService.updatePost(postId, dto, loginUser.getId());
         return ResponseEntity.ok(updatedId);
     }
 
-    // 게시글 삭제
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletePost(@PathVariable Long id) {
-        postService.deletePost(id);
+    /* ───────────── 5) 삭제 ───────────── */
+    @DeleteMapping("/{postId}")
+    public ResponseEntity<Void> deletePost(
+            @PathVariable Long postId,
+            HttpSession session) {
+
+        User loginUser = (User) session.getAttribute("loginUser");
+        if (loginUser == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        postService.deletePost(postId, loginUser.getId());
         return ResponseEntity.noContent().build();
     }
 }

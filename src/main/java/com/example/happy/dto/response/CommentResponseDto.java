@@ -15,7 +15,6 @@ public class CommentResponseDto {
     private Long id;
     private String content;
     private String authorUsername;
-    private Long parentId;
     private LocalDateTime createdAt;
 
     public static CommentResponseDto fromEntity(Comment comment) {
@@ -23,7 +22,6 @@ public class CommentResponseDto {
                 .id(comment.getId())
                 .content(comment.getContent())
                 .authorUsername(comment.getAuthor().getUsername())
-                .parentId(comment.getParent() != null ? comment.getParent().getId() : null)
                 .createdAt(comment.getCreatedAt())
                 .build();
     }
