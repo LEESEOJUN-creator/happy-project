@@ -53,7 +53,7 @@ public class AuthService {
             throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
         }
 
-        if (user.isVerified()) {
+        if (!user.isVerified()) {
             throw new IllegalStateException("학생증 인증 대기 중입니다.");
         }
 
