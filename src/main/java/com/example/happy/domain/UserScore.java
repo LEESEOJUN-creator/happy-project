@@ -17,7 +17,9 @@ public class UserScore {
     private Long id;
 
     @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false, unique = true) // ← 반드시 명시
     private User user;
+
 
     private int game1Score;
     private int game2Score;

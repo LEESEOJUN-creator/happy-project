@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // AUTO_INCREMENT
-    @Column(name = "user_id")
+    @Column(name = "id")
     private Long id;  // 사용자 고유 ID
 
     @Column(nullable = false, unique = true) // null값 허용x, 중복 불가
@@ -27,7 +27,7 @@ public class User {
     @Column(nullable = false)
     private String username; // 닉네임 or 이름
 
-    @Column(length = 255)
+    @Column(nullable = false,length = 255)
     private String studentCardUrl;
 
     @CreationTimestamp

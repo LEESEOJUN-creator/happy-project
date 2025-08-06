@@ -1,4 +1,4 @@
-package com.example.happy.dto;
+package com.example.happy.dto.response;
 
 import com.example.happy.domain.UserScore;
 import lombok.Getter;

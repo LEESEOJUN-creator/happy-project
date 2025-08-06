@@ -1,7 +1,8 @@
 package com.example.happy.controller;
 
 import com.example.happy.domain.User;
-import com.example.happy.dto.UserScoreResponseDto;
+import com.example.happy.dto.response.UserRankingResponseDto;
+import com.example.happy.dto.response.UserScoreResponseDto;
 import com.example.happy.service.UserScoreService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +27,7 @@ public class UserScoreController {
             HttpSession session) {
 
         User loginUser = (User) session.getAttribute("loginUser");
-        if (loginUser == null) {               // 로그인 안 된 경우
+        if (loginUser == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
 
@@ -37,7 +38,6 @@ public class UserScoreController {
     /* ───────────── 2) 게시글 작성 점수 반영 ───────────── */
     @PostMapping("/post")
     public ResponseEntity<Void> addPostScore(HttpSession session) {
-
         User loginUser = (User) session.getAttribute("loginUser");
         if (loginUser == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
@@ -47,9 +47,25 @@ public class UserScoreController {
         return ResponseEntity.ok().build();
     }
 
-    /* ───────────── 3) 랭킹 조회 (전체 공개) ───────────── */
+    /* ───────────── 3) 점수 목록(정렬만, 기존 형태 유지) ───────────── */
     @GetMapping("/ranking")
     public ResponseEntity<List<UserScoreResponseDto>> getRankings() {
         return ResponseEntity.ok(userScoreService.getRankings());
+    }
+
+    /* ───────────── 4) 전체 랭킹(순위 포함) ───────────── */
+    @GetMapping("/ranking/all")
+    public ResponseEntity<List<UserRankingResponseDto>> getAllRankingsSequential() {
+        return ResponseEntity.ok(userScoreService.getAllRankingsSequential());
+    }
+
+    /* ───────────── 5) 내 랭킹(순위 포함) ───────────── */
+    @GetMapping("/ranking/me")
+    public ResponseEntity<UserRankingResponseDto> getMyRanking(HttpSession session) {
+        User loginUser = (User) session.getAttribute("loginUser");
+        if (loginUser == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        return ResponseEntity.ok(userScoreService.getMyRankingSequential(loginUser.getId()));
     }
 }
