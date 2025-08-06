@@ -16,6 +16,5 @@ public interface UserScoreRepository extends JpaRepository<UserScore, Long> {
 
     // 내 점수보다 높은 사람 수
     long countByTotalScoreGreaterThan(int totalScore);
+    List<UserScore> findTop10ByOrderByTotalScoreDesc();
 }
-
-

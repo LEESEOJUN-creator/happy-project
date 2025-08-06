@@ -2,9 +2,12 @@ package com.example.happy.service;
 
 import com.example.happy.converter.UserConverter;
 import com.example.happy.domain.User;
+import com.example.happy.domain.VerificationRequest;
 import com.example.happy.dto.request.LoginRequestDto;
 import com.example.happy.dto.request.SignupRequestDto;
+import com.example.happy.enums.VerificationStatus;
 import com.example.happy.repository.UserRepository;
+import com.example.happy.repository.VerificationRequestRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -13,6 +16,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
+import com.example.happy.enums.VerificationStatus;
+
 
 @Service
 @RequiredArgsConstructor
@@ -23,6 +28,7 @@ public class AuthService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final UserConverter userConverter;
+    private final VerificationRequestRepository verificationRequestRepository;
 
     /* 회원가입 */
     public void signup(SignupRequestDto dto, MultipartFile studentCardImage) {
@@ -41,6 +47,14 @@ public class AuthService {
         // 4. 엔티티 생성 & 저장 (초기 verified = false)
         User user = userConverter.toUser(dto, encodedPwd, savedUrl);
         userRepository.save(user);
+
+
+        VerificationRequest request = VerificationRequest.builder()
+                .user(user)
+                .imageUrl(savedUrl)
+                .status(VerificationStatus.PENDING)
+                .build();
+        verificationRequestRepository.save(request);
     }
 
     /* 로그인 – 성공 시 User 리턴 */
