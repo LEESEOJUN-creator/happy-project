@@ -4,12 +4,14 @@ import com.example.happy.domain.User;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity
 public class UserScore {
 
     @Id
@@ -17,12 +19,24 @@ public class UserScore {
     private Long id;
 
     @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     private int game1Score;
     private int game2Score;
     private int postScore;
     private int totalScore;
+
+    private boolean rewarded;
+
+    private LocalDateTime updatedAt;
+
+    @PrePersist
+    @PreUpdate
+    public void updateTimestampAndTotal() {
+        this.updatedAt = LocalDateTime.now();
+        calculateTotal();
+    }
 
     public void calculateTotal() {
         this.totalScore = game1Score + game2Score + postScore;
@@ -36,3 +50,4 @@ public class UserScore {
         calculateTotal();
     }
 }
+

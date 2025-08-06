@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface UserScoreRepository extends JpaRepository<UserScore, Long> {
     Optional<UserScore> findByUser(User user);
     List<UserScore> findAllByOrderByTotalScoreDesc();
+    List<UserScore> findTop10ByOrderByTotalScoreDesc();
 }
