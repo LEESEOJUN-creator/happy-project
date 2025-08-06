@@ -29,7 +29,6 @@ public class AuthController {
         return ResponseEntity.status(HttpStatus.CREATED).body("회원가입 성공");
     }
 
-
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody LoginRequestDto dto, HttpSession session){
         User user = authService.login(dto);
