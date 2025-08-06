@@ -1,0 +1,15 @@
+/* src/pages/Board/Board.css */
+.board-container {
+  display: flex;
+}
+
+.category-sidebar {
+  width: 200px;
+  border-right: 1px solid #ccc;
+  padding-right: 10px;
+}
+
+.board-main {
+  flex: 1;
+  padding-left: 20px;
+}

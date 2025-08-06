@@ -1,0 +1,119 @@
+/* src/pages/AdminPage.css */
+
+.admin-dashboard {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f6f9;
+}
+
+/* 사이드바 */
+.sidebar {
+  width: 220px;
+  background-color: #ffffff; /* 흰 배경 */
+  color: #1f2937; /* 진한 회색 */
+  padding: 24px;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.05);
+  border-right: 1px solid #e5e7eb;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.sidebar h3 {
+  font-size: 20px;
+  margin-bottom: 24px;
+  color: #111827;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 16px;
+  cursor: pointer;
+  padding: 8px 0;
+  border-radius: 6px;
+  padding-left: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.sidebar li:hover {
+  background-color: #f3f4f6;
+}
+
+/* 메인 패널 */
+.main-panel {
+  margin-left: 220px; /* 사이드바 너비만큼 밀어냄 */
+  flex: 1;
+  padding: 40px;
+  background-color: #ffffff;
+}
+
+.main-panel h2 {
+  font-size: 28px;
+  color: #111827;
+  margin-bottom: 32px;
+}
+
+/* 상단 통계 카드 */
+.summary-cards {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.summary-cards div {
+  flex: 1;
+  padding: 20px;
+  background-color: #eff6ff;
+  border-left: 5px solid #2563EB;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #1e3a8a;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* 학생 확인 섹션 */
+.student-check {
+  margin-bottom: 40px;
+}
+
+.student-check h3 {
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.student-check div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.student-check p {
+  flex: 1;
+  font-weight: 500;
+}
+
+/* 주간 랭킹 */
+.ranking {
+  margin-bottom: 40px;
+}
+
+.ranking h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.ranking ol {
+  padding-left: 20px;
+}
+
+.ranking li {
+  margin-bottom: 12px;
+}

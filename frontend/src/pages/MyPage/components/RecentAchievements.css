@@ -1,0 +1,51 @@
+.recent-achievements {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+}
+
+.recent-achievements h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: #333;
+}
+
+.achievement-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.achievement-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.achievement-item:last-child {
+  border-bottom: none;
+}
+
+.icon {
+  font-size: 24px;
+  margin-right: 12px;
+}
+
+.text-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-text {
+  font-weight: 600;
+  color: #222;
+}
+
+.sub-text {
+  font-size: 13px;
+  color: #666;
+}

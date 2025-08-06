@@ -1,0 +1,255 @@
+/* Layout */
+.home-container {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.bottom-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* 공지사항 */
+.notice-section {
+  background: linear-gradient(90deg, #7c3aed, #6366f1);
+  color: white;
+  padding: 20px 24px;
+  border-radius: 16px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.notice-text {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+}
+
+.notice-section button {
+  background-color: white;
+  color: #5b21b6;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.notice-section button:hover {
+  background-color: #f3e8ff;
+}
+
+/* 게임 카드 */
+.game-section {
+  margin-bottom: 40px;
+}
+
+.game-section .game-cards {
+  display: flex;
+  gap: 20px;
+}
+
+.game-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  width: 50%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s;
+}
+
+.game-card:hover {
+  transform: translateY(-4px);
+}
+
+.game-card img.game-thumbnail {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+/* 게시판 미리보기 */
+.board-preview {
+  width: 70%;
+  background-color: #f7f7f7;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.section-header .view-all {
+  font-size: 14px;
+  color: #6366f1;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.post-card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  margin-bottom: 6px;
+  font-size: 15px;
+}
+
+.post-meta {
+  font-size: 14px;
+  color: #777;
+  margin-left: 8px;
+}
+
+.post-content {
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.post-stats {
+  font-size: 14px;
+  color: #555;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.ranking-preview {
+  width: 30%;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.ranking-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.trophy-icon {
+  color: gold;
+  font-size: 20px;
+}
+
+.rank-box {
+  background: linear-gradient(to right, #7c3aed, #6366f1);
+  color: white;
+  text-align: center;
+  border-radius: 12px;
+  padding: 20px 0;
+  margin-bottom: 20px;
+}
+
+.rank-box .rank-number {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.rank-box .rank-label {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.stat-box {
+  width: 48%;
+  background-color: #3f2c88;
+  border-radius: 12px;
+  padding: 14px 0;
+  text-align: center;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+}
+
+.stat-value {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 4px;
+  color: #111827;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: #666;
+}
+
+.top-players {
+  margin-top: 16px;
+}
+
+.top-players h3 {
+  font-size: 15px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.player-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.rank-medal {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 28px;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  margin-right: 10px;
+}
+
+.rank-1 { background-color: #facc15; }
+.rank-2 { background-color: #a3a3a3; }
+.rank-3 { background-color: #f97316; }
+
+.player-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.player-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.player-name {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.player-points {
+  font-size: 13px;
+  color: #555;
+}

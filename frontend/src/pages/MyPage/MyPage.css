@@ -1,0 +1,202 @@
+/* 전체 페이지 컨테이너 */
+.mypage-container {
+  padding: 40px 60px;
+  background-color: #f9f9fb;
+  min-height: 100vh;
+  font-family: 'Pretendard', sans-serif;
+}
+
+/* ─────────────────────────────── */
+/* 🔹 상단 프로필 카드 */
+.profile-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  margin-bottom: 40px;
+}
+
+.profile-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ddd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.user-name {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 0;
+  color: #111827;
+}
+
+.user-status {
+  display: inline-block;
+  background-color: #d1fae5;
+  color: #059669;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  width: fit-content;
+}
+
+.member-since {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* ─────────────────────────────── */
+/* 🔹 메인 그리드 */
+.mypage-grid {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.left-column,
+.right-column {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ─────────────────────────────── */
+/* 🔹 공통 카드 스타일 */
+.mypage-card,
+.account-card,
+.activity-card,
+.rank-card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* 제목 공통 */
+.section-title,
+.account-card h3,
+.activity-card h3,
+.rank-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 20px;
+}
+
+/* ─────────────────────────────── */
+/* 🔹 활동 카드 내부 요소 */
+.activity-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.icon-wrapper {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  color: white;
+  font-size: 16px;
+}
+
+.icon-wrapper.blue {
+  background-color: #3b82f6;
+}
+
+.icon-wrapper.red {
+  background-color: #f87171;
+}
+
+.icon-wrapper.green {
+  background-color: #34d399;
+}
+
+.text-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.value {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+/* ─────────────────────────────── */
+/* 🔹 순위 카드 내부 요소 */
+.rank-circle {
+  width: 80px;
+  height: 80px;
+  background-color: #7c3aed;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 8px;
+}
+
+.rank-desc {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.score-bar-group {
+  margin-bottom: 16px;
+}
+
+.score-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: #374151;
+}
+
+.score-bar {
+  width: 100%;
+  height: 10px;
+  background-color: #e5e7eb;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.score-fill {
+  height: 100%;
+  background-color: #7c3aed;
+  border-radius: 6px;
+}

@@ -1,0 +1,61 @@
+.rank-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  padding: 24px;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #1f2937;
+}
+
+.rank-circle {
+  width: 80px;
+  height: 80px;
+  background-color: #7c3aed; /* 보라색 */
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 8px;
+}
+
+.rank-desc {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 24px;
+}
+
+.score-bar-group {
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.score-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: #374151;
+}
+
+.score-bar {
+  width: 100%;
+  height: 10px;
+  background-color: #e5e7eb;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.score-fill {
+  height: 100%;
+  background-color: #7c3aed;
+  border-radius: 6px;
+}

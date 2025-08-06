@@ -1,0 +1,260 @@
+/* src/pages/Ranking/Ranking.css */
+
+.ranking-container {
+  padding: 24px;
+  background-color: #f5f5f5;
+}
+
+/* ✅ 상단 헤더 전체 박스 (그라데이션 배경 + flex 정렬) */
+.ranking-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  background: linear-gradient(90deg, #8e2de2, #4a00e0);
+  color: white;
+  border-radius: 16px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+/* 🔹 왼쪽 랭킹 정보 (#47 등) */
+.ranking-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 18px;
+}
+
+.ranking-rank {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.ranking-total {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* 🔹 오른쪽 통계 블럭 그룹 */
+.ranking-header-right {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* 통계 한 개 블럭 */
+.ranking-stat {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 12px 16px;
+  border-radius: 12px;
+  min-width: 150px;
+  gap: 10px;
+}
+
+/* 아이콘 */
+.stat-icon {
+  font-size: 20px;
+  color: white;
+}
+
+/* 숫자 및 텍스트 */
+.stat-value {
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: white;
+}
+
+/* ✅ 중단: 내 순위, 성과지표 */
+.ranking-middle {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.ranking-card {
+  flex: 1;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  min-width: 280px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 12px;
+  background: #eee;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+.progress {
+  height: 100%;
+  background: #8e2de2;
+  border-radius: 8px;
+}
+
+.rank-change {
+  color: green;
+  font-size: 14px;
+}
+
+/* ✅ 하단: Top Players 리스트 */
+.ranking-bottom {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 24px;
+}
+
+.top-player {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border-radius: 8px;
+  margin: 6px 0;
+}
+
+.player-rank {
+  width: 32px;
+  font-weight: bold;
+}
+
+.player-name {
+  flex: 1;
+  margin-left: 12px;
+}
+
+.player-points {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* ✅ 성과지표 - 개별 항목 스타일 */
+.performance-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.performance-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.performance-icon-box {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 18px;
+}
+
+.performance-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.performance-title {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.performance-subtitle {
+  font-size: 12px;
+  color: gray;
+}
+
+.performance-right {
+  text-align: right;
+  font-size: 14px;
+}
+
+.win-rate {
+  color: #198754;
+  font-weight: bold;
+}
+
+.increase {
+  color: #d63384;
+  font-weight: bold;
+}
+
+/* 📊 성과지표 행 구성 */
+.indicator-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 16px 0;
+}
+
+.indicator-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.indicator-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: white;
+}
+
+.indicator-icon.blue {
+  background: #4dabf7;
+}
+
+.indicator-icon.purple {
+  background: #d0bfff;
+  color: #6f42c1;
+}
+
+.indicator-text .label-bold {
+  font-weight: bold;
+}
+
+.indicator-text .label-sub {
+  font-size: 12px;
+  color: #666;
+}
+
+.indicator-right {
+  text-align: right;
+}
+
+.value-bold {
+  font-weight: bold;
+}
+
+.value-sub {
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.value-sub.green {
+  color: green;
+}
+
+.value-sub.purple {
+  color: #a855f7;
+}
